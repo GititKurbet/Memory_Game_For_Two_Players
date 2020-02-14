@@ -65,7 +65,7 @@ public class Client implements CallBack{
 
     }
 
-    public interface onClick {
+    public interface onClick{
 
     }
 

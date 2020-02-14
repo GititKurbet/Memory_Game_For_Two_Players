@@ -12,10 +12,16 @@ public class GameThread extends Thread{
         this.socket1 = socket1;
         this.socket2 = socket2;
         this.size = size;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread created");
+        System.out.println("Thread start running");
+
         ObjectInputStream[] inputStreams = new ObjectInputStream[2];
         ObjectOutputStream[] outputStreams = new ObjectOutputStream[2];
 
-        System.out.println("Thread created");
 
 
         ObjectOutputStream out1 = null;
@@ -65,10 +71,5 @@ public class GameThread extends Thread{
 
          catch(Exception e) {}
         */
-    }
-
-    @Override
-    public void run() {
-        System.out.println("Thread start running");
     }
 }
