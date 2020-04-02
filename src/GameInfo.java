@@ -13,8 +13,8 @@ public class GameInfo  implements Serializable{
     int playerNumber;
     int size;
     int scoring1, scoring2, moves1, moves2;
-    int turn;
-    int winning; //0 for the game is still on, 1 for player 1 won, 2 for player 2 won, 3 for equal score
+    int firstTurn;
+    int winning; //0 for if the game is still on, 1 for player 1 won, 2 for player 2 won, 3 for equal score
 
     //constructor : create a new game room
     public GameInfo(int size) {
@@ -27,7 +27,7 @@ public class GameInfo  implements Serializable{
 
         //Randomly choose who get the first turn
         Random random = new Random();
-        turn = random.nextInt(2)+1;
+        firstTurn = random.nextInt(2)+1;
 
         for (int i = 1; i <= (size*size)/2 ; i++ ) {
             cardsOrder.add(i);

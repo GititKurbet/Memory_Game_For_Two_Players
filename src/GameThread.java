@@ -46,14 +46,38 @@ public class GameThread extends Thread{
             newGame.currentPlayer(2); // Player 2
             out2.writeObject(newGame);
 
-            int turn = newGame.turn;
+            int turn = newGame.firstTurn;
+            int clicked = 0;
+            Click newClick = null;
 
             while ( newGame.winning == 0 ) {
-                Click newClick = (Click) inputStreams[turn-1].readObject();
+                System.out.println("Number of clicks : " + clicked +"\nCurrent turn : " + turn );
+                try {
+                    newClick = (Click) inputStreams[turn-1].readObject();
+                } catch (Exception e) {
+                    if ( newGame.winning != 0 ) {
+                        if (newGame.winning == 3)
+                            System.out.println("It's a draw");
+                        else
+                            System.out.println("** Player number" + newGame.winning + " won ! **");
+                    }
+                    break;
+                }
+                System.out.println("Player number " + turn + " send a click");
                 outputStreams[2-turn].writeObject(newClick);
+                System.out.println("Sent to player number" + (3-turn));
+                if (newClick != null)
+                    clicked +=1;
 
-                //turn = 3 - turn;
+                //After two legal clicks - moving to next turn
+                if ( clicked == 2 ) {
+                    turn = 3 - turn;
+                    clicked = 0;
+                }
             }
+
+
+            System.out.println("            @@ END OF GAME @@");
 
         }
         catch (Exception e) {
@@ -62,14 +86,5 @@ public class GameThread extends Thread{
         }
 
 
-/*
-        try {
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-
-            GameInfo game = (GameInfo) in.readObject();
-
-
-         catch(Exception e) {}
-        */
     }
 }

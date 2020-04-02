@@ -1,22 +1,30 @@
 import javax.swing.*;
-import java.awt.*;
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Client implements CallBack{
     static GameInfo myGame = null;
     static ObjectOutputStream out = null;
     static ObjectInputStream in = null;
 
-    public void methodToCallBack(int player, int phtIndex, int btnIndex) {
-        System.out.println("Player number " + myGame.playerNumber + " : I've been called back");
-        Click current = new Click(phtIndex, btnIndex);
-        try {out.writeObject(current);}
+    public void methodToCallBack(int player, int index, boolean end, boolean draw, int playerNum) {
+//        System.out.println("Player number " + myGame.playerNumber + " : I've been called back");
+        if (end){
+            if (draw)
+                myGame.winning = 3;
+            else
+                myGame.winning = playerNum;
+            return;
+        }
+        Click current = new Click(index);
+        try {
+            out.writeObject(current);
+            System.out.println("Player number " + myGame.playerNumber + " send a click");
+        }
         catch (Exception e) { e.printStackTrace();}
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         Socket gameSocket = null;
         String host = "localhost";
 
@@ -34,23 +42,28 @@ public class Client implements CallBack{
             myGame = (GameInfo) in.readObject();
 
             System.out.println("New game has began !\nGame size : " + myGame.size );
+            System.out.println("I am player number " + myGame.playerNumber );
 
-
-            GameGUI myGameGui = new GameGUI(myGame.size, myGame.playerNumber, myGame.cardsOrder);
-            if ( myGame.playerNumber == myGame.turn )
-                myGameGui.currentTurn = true;
-            else myGameGui.currentTurn = false;
+            GameGUI myGameGui = new GameGUI(myGame.size, myGame.playerNumber, myGame.cardsOrder, myGame.firstTurn);
             myGameGui.pack();
             myGameGui.setVisible(true);
             myGameGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            myGameGui.addMassage("You are player " + myGame.playerNumber);
 
-            while ( myGame.winning == 0 ){
-                if ( myGameGui.currentTurn == false) {
-                    Click newClick = (Click) in.readObject();
-                    myGameGui.addMassage("Competitor clicked");
-                    System.out.println("Competitor clicked");
-                }
+            while (myGame.winning == 0) {
+                System.out.println("it is " + (myGameGui.currentTurn ? "" : "not") + " my turn");
+//                if (!myGameGui.currentTurn) {
+//                    System.out.println("Not my turn");
+                Click newClick = (Click) in.readObject();
+                System.out.println("Player number " + myGame.playerNumber + " receive a click");
+
+                SwingUtilities.invokeAndWait(new Runnable() {
+                    @Override
+                    public void run() {
+                        myGameGui.addMessage("Competitor clicked");
+                        myGameGui.clickOnCard(newClick.index);
+                    }
+                });
+//                }
             }
 
             out.close();
@@ -62,10 +75,6 @@ public class Client implements CallBack{
             System.exit(1);
         }
 
-
-    }
-
-    public interface onClick{
 
     }
 

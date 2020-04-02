@@ -10,12 +10,14 @@ public class Server {
 
     public static void main(String[] args) {
         boolean listening = true;
-        int size = 0;
+        int size = 4; //TODO change that to 0 again
+        /*
         while ( (size != 4) && (size != 6) ) {
             System.out.println("Enter size of board : 4 or 6");
             Scanner scan = new Scanner(System.in);
             size = scan.nextInt();
         }
+        */
 
         int numberOfPlayers = 0;
 
