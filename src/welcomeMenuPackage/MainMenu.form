@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="welcomeMenuPackage.MainMenu">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="517" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1705988"/>
+      <enabled value="true"/>
+      <font name="Arial"/>
+      <foreground color="-2295073"/>
+    </properties>
+    <border type="none">
+      <font/>
+      <title-color color="-16777216"/>
+    </border>
+    <children>
+      <vspacer id="702c">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <component id="5159f" class="javax.swing.JLabel" binding="gameJL">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font name="Bookman Old Style" size="36"/>
+          <text value="Two Players Memory Game  "/>
+        </properties>
+      </component>
+      <component id="5dbc8" class="javax.swing.JButton" binding="signInButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-3948593"/>
+          <font name="Goudy Old Style" size="28" style="0"/>
+          <text value="Sign in"/>
+        </properties>
+      </component>
+      <component id="66318" class="javax.swing.JLabel" binding="orJL">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <font name="Goudy Old Style" size="28" style="0"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="or"/>
+        </properties>
+      </component>
+      <component id="58ac1" class="javax.swing.JButton" binding="register">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-3948593"/>
+          <font name="Goudy Old Style" size="28" style="0"/>
+          <text value="Register"/>
+        </properties>
+      </component>
+      <vspacer id="666d6">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <component id="51b7b" class="javax.swing.JLabel" binding="welcomeJL">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font name="Bookman Old Style" size="28"/>
+          <text value="welcome!   "/>
+        </properties>
+      </component>
+      <vspacer id="7678b">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="45766">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <grid id="7ca3d" binding="bottomPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <background color="-1705988"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="1ae28" class="javax.swing.JButton" binding="leaderBoard">
+            <constraints/>
+            <properties>
+              <background color="-3948593"/>
+              <font name="Bookman Old Style" size="22"/>
+              <text value="Show leaderboard"/>
+            </properties>
+          </component>
+          <component id="dc4cf" class="javax.swing.JButton" binding="exit">
+            <constraints/>
+            <properties>
+              <background color="-3948593"/>
+              <font name="Bookman Old Style" size="22"/>
+              <text value="exit"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
