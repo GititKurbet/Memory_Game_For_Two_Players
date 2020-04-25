@@ -67,10 +67,10 @@ public class LeaderBoard extends JFrame{
                 return;
             User current = users.get(i-1);
             JLabel number = new JLabel(String.valueOf(i));
-            JLabel newName = new JLabel(current.name);
-            JLabel vic = new JLabel(String.valueOf(current.victories));
-            JLabel lo = new JLabel(String.valueOf(current.loses));
-            JLabel per = new JLabel(String.valueOf(current.perWins) +"%");
+            JLabel newName = new JLabel(current.getName());
+            JLabel vic = new JLabel(String.valueOf(current.getVictories()));
+            JLabel lo = new JLabel(String.valueOf(current.getLoses()));
+            JLabel per = new JLabel(String.valueOf(current.getPerWins()) +"%");
 
             number.setFont(INFO);
             newName.setFont(INFO);
