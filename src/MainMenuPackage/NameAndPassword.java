@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 
 public class NameAndPassword extends JFrame {
     JLabel please, nameJL, passwordJL;
@@ -22,6 +23,7 @@ public class NameAndPassword extends JFrame {
     final Font MESSAGE = new Font("message", Font.TRUETYPE_FONT,16);
 
     public NameAndPassword(boolean isNew) {
+
         this.isNew = isNew;
 
         player = new Client();
