@@ -23,14 +23,16 @@ public class MainMenu extends JFrame{
 
         public MainMenu() {
 
+            player = new Client();
+
             ActionListener checkUser = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if ( e.getSource() == signInButton ) {
-                        isNew = true;
+                        isNew = false;
                     }
                     if ( e.getSource() == registerButton ) {
-                        isNew = false;
+                        isNew = true;
                     }
 
                     Thread thread = new Thread(){
@@ -61,34 +63,14 @@ public class MainMenu extends JFrame{
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Server server = Server.getInstance();
-                    server.showLeaderBoard();
+                    sendShowTable(player);
                     };
             });
         }
 
-    /*
-        private void sendUserName(MenuCall callback, String name, char[] password, boolean isNew) {
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    callback.menuCommunication(name,password, isNew);
-                }
-            };
-          thread.start();
-        }
-
-
-        /*
-        @Override
-        public void sendLogIn(String name, char[] password, boolean isNew) {
-                sendUserName(player, name, password, isNew);
-        }
-
-    */
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-
+    private void sendShowTable(MenuCall player) {
+        player.sendShowTable();
     }
+
+    private void createUIComponents() { }
 }
