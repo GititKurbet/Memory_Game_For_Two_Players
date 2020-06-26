@@ -51,19 +51,19 @@ public class GameGUI extends JFrame implements ActionListener{
 
         System.out.println("New click received");
         Timer timer = new Timer(1500, this);
-        Icon icon = new ImageIcon( getClass().getResource(photosForGame.get(index)+".png"));
+        Icon icon = new ImageIcon( getClass().getResource("/" + photosForGame.get(index)+".png"));
 
         openCards += 1;
         if (openCards == 1) {
             System.out.println("index clicked is " + index);
-            firstPhoto = Integer.toString(photosForGame.get(index)) + ".png";
+            firstPhoto = "/" + Integer.toString(photosForGame.get(index)) + ".png";
             firstButton = buttons.get(index);
 
             firstButton.setIcon( icon) ;
         }
         else if (openCards == 2) {
             System.out.println("index clicked is " + index);
-            secPhoto = Integer.toString(photosForGame.get(index)) + ".png";
+            secPhoto = "/" + Integer.toString(photosForGame.get(index)) + ".png";
             secondButton = buttons.get(index);
 
             secondButton.setIcon( icon );
@@ -83,8 +83,8 @@ public class GameGUI extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        Icon def = new ImageIcon(getClass().getResource("default.png"));
-        Icon blank = new ImageIcon( getClass().getResource("blank.png"));
+        Icon def = new ImageIcon(getClass().getResource("/default.png"));
+        Icon blank = new ImageIcon( getClass().getResource("/blank.png"));
 
         if ( firstPhoto.equals(secPhoto)) {
             if (currentTurn) {
@@ -148,11 +148,11 @@ public class GameGUI extends JFrame implements ActionListener{
 
     private void toStartOver(int size) {
         Timer timer = new Timer(1500, this);
-        Icon def = new ImageIcon(getClass().getResource("default.png"));
+        Icon def = new ImageIcon(getClass().getResource("/default.png"));
 
         //add cards to board JPanel
         for( int i = 0; i < (size*size) ; i++ ) {
-            Icon icon = new ImageIcon( getClass().getResource(photosForGame.get(i)+".png"));
+            Icon icon = new ImageIcon( getClass().getResource("/" + photosForGame.get(i)+".png"));
             JButton photo = new JButton();
             photo.setBorder(BorderFactory.createLineBorder(Color.black));
             photo.setOpaque(true);
@@ -267,7 +267,7 @@ public class GameGUI extends JFrame implements ActionListener{
         name2 = users[2-playerNum].getName();
 
         //set icon of game window
-        URL iconURL = getClass().getResource("9.png");
+        URL iconURL = getClass().getResource("/9.png");
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
 
