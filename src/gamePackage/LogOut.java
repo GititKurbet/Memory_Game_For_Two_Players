@@ -3,7 +3,7 @@ package gamePackage;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class LogOut implements Serializable, MyInterface {
+public class LogOut implements Serializable, SentFromUser {
     String name;
     boolean toPass;
 

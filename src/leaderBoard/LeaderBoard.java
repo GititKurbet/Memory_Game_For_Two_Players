@@ -9,6 +9,10 @@ import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+/*
+GUI class - leaderboard frame
+get the table and show it to user
+ */
 public class LeaderBoard extends JFrame{
     JLabel title, rate, name, victories, loses, perWins;
     JPanel table;
@@ -99,8 +103,6 @@ public class LeaderBoard extends JFrame{
 
     public static void main(String[] args) {
         UsersTable myTable = new UsersTable(4);
-
-        // TODO: no GUI from server
         LeaderBoard frame = new LeaderBoard(myTable);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();

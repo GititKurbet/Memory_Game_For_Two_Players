@@ -2,6 +2,7 @@ package MainMenuPackage;
 
 import gamePackage.Client;
 import gamePackage.MenuCall;
+import javafx.geometry.VerticalDirection;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +12,10 @@ import java.awt.event.ActionListener;
 
 public class NameAndPassword extends JFrame {
     JLabel please, nameJL, passwordJL;
-    JPanel mainPanel;
+    JPanel mainPanel, bottomPanel;
     JTextField userName;
     JPasswordField password;
-    JButton go;
+    JButton go, back;
     Client player;
     boolean isNew;
     final Color BG = new Color(229,247,252);
@@ -41,6 +42,8 @@ public class NameAndPassword extends JFrame {
 
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(0,2,2,15));
+        bottomPanel = new JPanel();
+        bottomPanel.setLayout(new GridLayout(0,1));
 
         nameJL = new JLabel("User name : ");
         nameJL.setFont(MESSAGE);
@@ -54,9 +57,18 @@ public class NameAndPassword extends JFrame {
         mainPanel.add(passwordJL);
         mainPanel.add(password);
 
-        go = new JButton("go");
+        go = new JButton("OK");
         go.setFont(MESSAGE);
+        go.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        back = new JButton("Back to main menu");
+        back.setFont(MESSAGE);
+        back.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        bottomPanel.add(go);
+        bottomPanel.add(back);
+
+        bottomPanel.setBackground(BG);
         mainPanel.setBackground(BG);
         please.setBackground(BG);
         please.setOpaque(true);
@@ -65,8 +77,14 @@ public class NameAndPassword extends JFrame {
         setBackground(BG);
         add(please, BorderLayout.NORTH);
         add(mainPanel, BorderLayout.CENTER);
-        add(go, BorderLayout.SOUTH);
+        add(bottomPanel, BorderLayout.SOUTH);
 
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         go.addActionListener(new ActionListener() {
             @Override

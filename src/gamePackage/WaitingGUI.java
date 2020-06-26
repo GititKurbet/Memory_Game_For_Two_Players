@@ -9,7 +9,6 @@ import java.net.URL;
 public class WaitingGUI extends JFrame {
     JLabel nameJL;
     JLabel waitingJL;
-    Server server;
     final Color BG = new Color(229,247,252);
 
     public WaitingGUI(String name) {
@@ -19,7 +18,7 @@ public class WaitingGUI extends JFrame {
         nameJL.setBackground(BG);
         nameJL.setOpaque(true);
 
-        waitingJL = new JLabel("Waiting for a second player......");
+        waitingJL = new JLabel("Waiting for another player......");
         waitingJL.setFont( new Font("waiting", Font.TRUETYPE_FONT, 34));
         waitingJL.setBackground(BG);
         waitingJL.setOpaque(true);

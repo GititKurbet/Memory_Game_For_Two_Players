@@ -1,41 +1,24 @@
 package gamePackage;
 
-import leaderBoard.LeaderBoard;
-
-import javax.swing.*;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.Set;
+import java.util.TreeSet;
+/*
+this class responsible for manage users log in and log out
+and to update their scores in the file
+ */
 public class UsersManager implements Serializable {
     static UsersTable usersTable;
-    static ArrayList<User> loggedIn; // TODO: change to set
+    static Set<User> loggedIn;
     protected static int size;
 
     public UsersManager(int size){
         usersTable = new UsersTable(size);
-        loggedIn = new ArrayList<>();
+        loggedIn = new TreeSet<>();
         this.size = size;
     }
-
-
-    /*
-    public void showLeaderBoard(){
-
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                LeaderBoard leaders = new LeaderBoard(usersTable);
-                leaders.pack();
-                leaders.setVisible(true);
-                leaders.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            }
-        };
-        thread.start();
-    }
-    */
-
 
     public static User insertUser(LogIn logIn) {
 
@@ -96,29 +79,10 @@ public class UsersManager implements Serializable {
 
     public synchronized void userLogOut(String name) {
 
-        Iterator<User> itr = loggedIn.iterator();
-        while (itr.hasNext()) {
-            User user = itr.next();
-            if (user.getName().equals(name)) {
-                itr.remove();
-            }
-        }
+        loggedIn.remove(usersTable.getUser(name));
 
         System.out.println(name + " has left the game");
         System.out.println("Players in : " + loggedIn.toString());
     }
 
-    /*
-    @Override
-    public void passObject(UsersManager manager, ObjectOutputStream[] outputStreams, int playerNum) {
-        //this object only sent by game thread, no need to pass it between two players
-    }
-
-    @Override
-    public void receive(GameGUI game) {
-        System.out.println("****** UsersManager currently : " + usersTable.myTable.size() + " Users , " +
-        loggedIn.size() + " logged in now");
-        showLeaderBoard();
-    }
-    */
 }

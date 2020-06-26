@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class ChatLine implements Serializable, MyInterface {
+public class ChatLine implements Serializable, SentFromUser {
     String line;
     boolean toPass;
 

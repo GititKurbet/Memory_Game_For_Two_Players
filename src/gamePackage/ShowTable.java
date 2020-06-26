@@ -1,12 +1,14 @@
 package gamePackage;
 
-import leaderBoard.LeaderBoard;
-
-import javax.swing.*;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class ShowTable implements Serializable, MyInterface, ServerConnections {
+/*
+Object of communication
+When user wants to see the high scores table he send this object to the server
+the server send back to the user the table details
+ */
+public class ShowTable implements Serializable, SentFromUser{
     UsersManager manager;
 
     @Override
@@ -14,7 +16,7 @@ public class ShowTable implements Serializable, MyInterface, ServerConnections {
         this.manager = manager;
         System.out.println("Show leaderboard");
 
-        UsersTable currentTable = new UsersTable(4);
+        UsersTable currentTable = new UsersTable(manager.size);
 
         try {
             outputStreams[playerNum - 1].writeObject(currentTable);
@@ -25,31 +27,5 @@ public class ShowTable implements Serializable, MyInterface, ServerConnections {
     }
 
     @Override
-    public void receive(GameGUI game) {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                LeaderBoard leaders = new LeaderBoard(manager.usersTable);
-                leaders.pack();
-                leaders.setVisible(true);
-                leaders.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            }
-        };
-        thread.start();
-    }
-
-    @Override
-    public void respond(ObjectOutputStream out, UsersManager manager) throws IllegalArgumentException {
-        this.manager = manager;
-        System.out.println("Show leaderboard");
-
-        UsersTable currentTable = new UsersTable(4);
-
-        try {
-            out.writeObject(currentTable);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error with write object of ShowTable");
-        }
-    }
+    public void receive(GameGUI game) { }
 }

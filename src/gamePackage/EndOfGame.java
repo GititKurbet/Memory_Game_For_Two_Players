@@ -3,7 +3,7 @@ package gamePackage;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class EndOfGame implements Serializable, MyInterface {
+public class EndOfGame implements Serializable, SentFromUser {
     String name;
     boolean win;
     boolean draw;
