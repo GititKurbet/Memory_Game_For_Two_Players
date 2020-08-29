@@ -1,4 +1,8 @@
-package gamePackage;
+package communication;
+
+import clientPackage.GameGUI;
+import serverPackage.SentFromUser;
+import serverPackage.UsersManager;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -8,7 +12,7 @@ Object of communication
 When user wants to see the high scores table he send this object to the server
 the server send back to the user the table details
  */
-public class ShowTable implements Serializable, SentFromUser{
+public class ShowTable implements Serializable, SentFromUser {
     UsersManager manager;
 
     @Override

@@ -1,8 +1,10 @@
-package gamePackage;
+package serverPackage;
+
+import communication.LogIn;
+import communication.User;
+import communication.UsersTable;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 /*
@@ -12,7 +14,7 @@ and to update their scores in the file
 public class UsersManager implements Serializable {
     static UsersTable usersTable;
     static Set<User> loggedIn;
-    protected static int size;
+    public static int size;
 
     public UsersManager(int size){
         usersTable = new UsersTable(size);

@@ -1,4 +1,5 @@
-package gamePackage;
+package communication;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,12 +10,10 @@ This class is the communication between the server and the client
 include information about each game : cards order , current turn and scoring
  */
 public class GameInfo  implements Serializable{
-    ArrayList<Integer> cardsOrder;
-    int playerNumber;
-    int size;
+    public ArrayList<Integer> cardsOrder;
+    public int size, playerNumber, firstTurn;
     int scoring1, scoring2, moves1, moves2;
-    User[] users;
-    int firstTurn;
+    public User[] users;
 
     //constructor : create a new game room
     public GameInfo(int size, User[] users) {

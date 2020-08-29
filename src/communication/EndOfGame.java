@@ -1,4 +1,8 @@
-package gamePackage;
+package communication;
+
+import clientPackage.GameGUI;
+import serverPackage.SentFromUser;
+import serverPackage.UsersManager;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;

@@ -1,4 +1,8 @@
-package gamePackage;
+package communication;
+import clientPackage.GameGUI;
+import serverPackage.SentFromUser;
+import serverPackage.UsersManager;
+
 import javax.swing.*;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -41,7 +45,7 @@ public class Click implements Serializable, SentFromUser {
     }
 
     @Override
-    public void receive(GameGUI game) {
+    public void receive(final GameGUI game) {
         System.out.println("Click received");
 
         try {

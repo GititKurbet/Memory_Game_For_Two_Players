@@ -1,6 +1,4 @@
-package MainMenuPackage;
-
-import gamePackage.*;
+package clientPackage;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,7 +1,7 @@
-package leaderBoard;
+package clientPackage;
 
-import gamePackage.User;
-import gamePackage.UsersTable;
+import communication.User;
+import communication.UsersTable;
 
 import javax.swing.*;
 import javax.swing.border.Border;

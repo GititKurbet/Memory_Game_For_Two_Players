@@ -1,16 +1,17 @@
-package gamePackage;
+package serverPackage;
+
+import communication.*;
 import java.io.*;
 import java.net.SocketException;
 
 public class GameThread extends Thread{
-    private GameInfo newGame;
-    private ObjectInputStream[] inputStreams;
-    private ObjectOutputStream[] outputStreams;
-    private UsersManager manager;
-    final boolean LISTEN = true;
+    private final GameInfo newGame;
+    private final ObjectInputStream[] inputStreams;
+    private final ObjectOutputStream[] outputStreams;
+    private final UsersManager manager;
 
 
-    public GameThread( int size, ObjectInputStream[] inputStreams , ObjectOutputStream[] outputStreams,
+    public GameThread(int size, ObjectInputStream[] inputStreams , ObjectOutputStream[] outputStreams,
                       User[] users , UsersManager manager) throws Exception {
         System.out.println("@@@ Game thread created @@@");
 
@@ -26,12 +27,10 @@ public class GameThread extends Thread{
 
     }
 
-    @Override
     public void run() {
         System.out.println("@@@ Game thread start running @@@");
 
         Thread listenToFirst = new Thread(){
-            @Override
             public void run() {
                 try {
                     receive(newGame,1);
@@ -43,7 +42,6 @@ public class GameThread extends Thread{
         };
 
         Thread listenToSecond = new Thread() {
-            @Override
             public void run() {
                 try {
                     receive(newGame,2);
@@ -62,7 +60,7 @@ public class GameThread extends Thread{
     }
 
     public void receive(GameInfo newGame, int playerNum) throws EndOfInputException {
-        while ( LISTEN ) {
+        while ( true ) {
             try {
                 SentFromUser received = (SentFromUser) inputStreams[playerNum - 1].readObject();
                 System.out.println("...Object received...");

@@ -1,4 +1,8 @@
-package gamePackage;
+package communication;
+
+import clientPackage.GameGUI;
+import serverPackage.SentFromUser;
+import serverPackage.UsersManager;
 
 import javax.swing.*;
 import java.io.ObjectOutputStream;
@@ -13,8 +17,6 @@ public class ChatLine implements Serializable, SentFromUser {
         this.toPass = toPass;
     }
 
-
-    @Override
     public void passObject(UsersManager manager, ObjectOutputStream[] outputStreams, int playerNum) {
         if ( toPass ) {
             try {
@@ -27,11 +29,9 @@ public class ChatLine implements Serializable, SentFromUser {
         }
     }
 
-    @Override
-    public void receive(GameGUI game) {
+    public void receive(final GameGUI game) {
         try {
             SwingUtilities.invokeAndWait(new Runnable() {
-                @Override
                 public void run() {
                     game.addMessage(line);
                 }

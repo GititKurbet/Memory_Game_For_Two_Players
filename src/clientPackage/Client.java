@@ -1,6 +1,6 @@
-package gamePackage;
-import MainMenuPackage.MainMenu;
-import leaderBoard.LeaderBoard;
+package clientPackage;
+import communication.*;
+import serverPackage.SentFromUser;
 
 import javax.swing.*;
 import java.io.*;
@@ -20,7 +20,7 @@ public class Client implements GameCall , MenuCall{
     public void newLogIn(){
 
         Thread newLogIn = new Thread(){
-            @Override
+
             public void run() {
                 startMenu();
             }
@@ -44,7 +44,6 @@ public class Client implements GameCall , MenuCall{
     }
 
     //Player exit game
-    @Override
     public void sendEndOfGame( boolean win, boolean draw, boolean toPass, boolean logOut) {
         EndOfGame end = new EndOfGame(name ,  win, draw, toPass, logOut);
         endOfGame = true;
@@ -61,7 +60,6 @@ public class Client implements GameCall , MenuCall{
         }
     }
 
-    @Override
     public void sendChatMessage(String message, boolean toPass) {
 
         try{
@@ -73,7 +71,6 @@ public class Client implements GameCall , MenuCall{
 
     }
 
-    @Override
     public void showLeaderBoard() {
         try{
             out.writeObject(new ShowTable());
@@ -84,7 +81,6 @@ public class Client implements GameCall , MenuCall{
 
     }
 
-    @Override
     public void sendShowTable() {
         connectToServer();
 
@@ -108,7 +104,6 @@ public class Client implements GameCall , MenuCall{
 
     }
 
-    @Override
     public void menuCommunication(String name, char[] password , boolean isNew) {
         this.name = name;
         System.out.println("Name is " + this.name);
@@ -146,9 +141,8 @@ public class Client implements GameCall , MenuCall{
         createGame();
     }
 
-    public void showLeaderBoard(UsersTable table){
+    public void showLeaderBoard(final UsersTable table){
         Thread thread = new Thread() {
-            @Override
             public void run() {
                 LeaderBoard leaders = new LeaderBoard(table);
                 leaders.pack();

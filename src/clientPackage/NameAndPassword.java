@@ -1,8 +1,4 @@
-package MainMenuPackage;
-
-import gamePackage.Client;
-import gamePackage.MenuCall;
-import javafx.geometry.VerticalDirection;
+package clientPackage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +17,7 @@ public class NameAndPassword extends JFrame {
     final Color BG = new Color(229,247,252);
     final Font MESSAGE = new Font("message", Font.TRUETYPE_FONT,16);
 
-    public NameAndPassword(boolean isNew) {
+    public NameAndPassword(final boolean isNew) {
 
         this.isNew = isNew;
 
@@ -105,7 +101,7 @@ public class NameAndPassword extends JFrame {
         getRootPane().setDefaultButton(go);
     }
 
-    private void sendLogIn(MenuCall player, String name, char[] password, boolean isNew) {
+    private void sendLogIn(final MenuCall player, final String name, final char[] password, final boolean isNew) {
         Thread thread = new Thread() {
             @Override
             public void run() {

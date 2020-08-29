@@ -1,5 +1,6 @@
-package gamePackage;
+package serverPackage;
 
+import clientPackage.GameGUI;
 import java.io.ObjectOutputStream;
 
 public interface SentFromUser {

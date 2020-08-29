@@ -1,4 +1,6 @@
-package gamePackage;
+package serverPackage;
+
+import communication.*;
 
 import java.io.*;
 import java.net.ServerSocket;

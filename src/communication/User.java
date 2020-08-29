@@ -1,4 +1,4 @@
-package gamePackage;
+package communication;
 
 import java.io.Serializable;
 

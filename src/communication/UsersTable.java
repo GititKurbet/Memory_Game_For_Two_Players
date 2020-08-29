@@ -1,4 +1,5 @@
-package gamePackage;
+package communication;
+
 import javax.swing.*;
 import java.io.File;
 import java.io.PrintWriter;

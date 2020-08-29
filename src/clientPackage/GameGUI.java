@@ -1,4 +1,6 @@
-package gamePackage;
+package clientPackage;
+import communication.User;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -7,26 +9,18 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 
-interface GameCall {
-    void gameCommunications( int index, int openCards, boolean toPass);
-    void sendChatMessage(String message, boolean toPass);
-    void sendEndOfGame(boolean win, boolean draw, boolean toPass, boolean logOut);
-    void logOut(boolean toPass);
-    void showLeaderBoard();
-}
-
 public class GameGUI extends JFrame implements ActionListener{
-    private JPanel board;
-    private JPanel scoring;
-    private JPanel chatPanel;
-    private JLabel player1;
-    private JLabel player2;
-    private JLabel moves1JL;
-    private JLabel moves2JL;
-    private JLabel turn;
-    private JLabel chatTitle;
-    private JTextField writeField;
-    private JTextArea messages;
+    private final JPanel board;
+    private final JPanel scoring;
+    private final JPanel chatPanel;
+    private final JLabel player1;
+    private final JLabel player2;
+    private final JLabel moves1JL;
+    private final JLabel moves2JL;
+    private final JLabel turn;
+    private final JLabel chatTitle;
+    private final JTextField writeField;
+    private final JTextArea messages;
     private JButton firstButton, secondButton;
     private String firstPhoto, secPhoto;
     private File file;
@@ -122,7 +116,7 @@ public class GameGUI extends JFrame implements ActionListener{
                 competitorHere = false;
 
                 //send call to server : update scores
-                sendEnd(player, name1,victory,draw, false);
+                sendEnd(player,victory,draw, false);
 
                 //no need to update scores again
                 addMessage("** Log out to start a new game **");
@@ -137,7 +131,7 @@ public class GameGUI extends JFrame implements ActionListener{
             turn.setText("It's " + name2 + " turn");
             turn.setForeground(Color.BLACK);
         }
-        else if (!currentTurn) {
+        else {
             currentTurn = true;
             turn.setText("It's your turn !");
             turn.setForeground(Color.RED);
@@ -147,20 +141,19 @@ public class GameGUI extends JFrame implements ActionListener{
     }
 
     private void toStartOver(int size) {
-        Timer timer = new Timer(1500, this);
+        final Timer timer = new Timer(1500, this);
         Icon def = new ImageIcon(getClass().getResource("/default.png"));
 
         //add cards to board JPanel
         for( int i = 0; i < (size*size) ; i++ ) {
-            Icon icon = new ImageIcon( getClass().getResource("/" + photosForGame.get(i)+".png"));
-            JButton photo = new JButton();
+            final Icon icon = new ImageIcon( getClass().getResource("/" + photosForGame.get(i)+".png"));
+            final JButton photo = new JButton();
             photo.setBorder(BorderFactory.createLineBorder(Color.black));
             photo.setOpaque(true);
             photo.setIcon(def);
             buttons.add(photo);
 
             photo.addActionListener(new ActionListener() {
-                @Override
                 public void actionPerformed(ActionEvent e) {
                     //if not this player turn
                     if ( !currentTurn )
@@ -232,7 +225,7 @@ public class GameGUI extends JFrame implements ActionListener{
     }
 
 
-    private void sendEnd(GameCall callback,String name, boolean win, boolean draw, boolean logOut){
+    private void sendEnd(GameCall callback, boolean win, boolean draw, boolean logOut){
         callback.sendEndOfGame( win, draw, competitorHere, logOut);
     }
 
@@ -246,7 +239,7 @@ public class GameGUI extends JFrame implements ActionListener{
         addMessage(name2 + " has left the game\nYOU WON!");
         addMessage("** Log out to start a new game **");
         myAccount.addVictory();
-        sendEnd(player, name1, true, false, false);
+        sendEnd(player, true, false, false);
     }
 
     public GameGUI(User[] users, int size,int playerNum, ArrayList<Integer> cardsOrder, int firstTurn){
@@ -256,7 +249,7 @@ public class GameGUI extends JFrame implements ActionListener{
             @Override
             public void windowClosing(WindowEvent e) {
                 if(competitorHere){
-                    sendEnd(player, name1, false, false, true);
+                    sendEnd(player, false, false, true);
                 } else logOut(player);
             }
         });
@@ -303,7 +296,7 @@ public class GameGUI extends JFrame implements ActionListener{
         if (size == 4)
             messages.setRows(15);
         else if (size == 6)
-            messages.setRows(27);
+            messages.setRows(22);
 
         messages.setBackground(new Color(190, 215, 156));
         Border lowered = BorderFactory.createLoweredBevelBorder();
@@ -355,7 +348,7 @@ public class GameGUI extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(competitorHere){
-                    sendEnd(player, name1, false, false, true);
+                    sendEnd(player, false, false, true);
                 } else logOut(player);
                 dispose();
             }
