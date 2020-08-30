@@ -6,6 +6,8 @@ The game is for two players who share a network.
 Developed with JAVA.
 The communication works with TCP network protocol.
 
+![](GameGif1.gif)
+
 ## Features
 1)	Live memory game with opponent on the network
 2)  Graphical user interface
