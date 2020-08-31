@@ -22,11 +22,18 @@ Number od turnes (moves) are counted for each player.
 
 After all cards are open - the player with more points is the winner. If there is a draw - each player earn half of win.
 
+![](GameGif4.gif)
+
+In the top menu bar we have 3 options :
+1) Log out
+2) Show The top players table
+3) Show my details
+
 ## Top Players Table
 
 ![](LeaderBoard.png)
 
-Display of the 5 top players according of their wins percent
+Display of 5 top players according of their wins percent
 
 ## Signing in
 
