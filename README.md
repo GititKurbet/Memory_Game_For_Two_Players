@@ -17,8 +17,8 @@ The communication works with TCP network protocol.
 
 ![](GameGif1.gif)
 
-Each player in turn flips two cards. If these two cards are identical this player earn a point. 
-Number od turnes (moves) are counted for each player.
+Each player in turn flips two cards. If these two cards are identical, this player earn a point. 
+Number of turnes (moves) are counted for each player.
 
 After all cards are open - the player with more points is the winner. If there is a draw - each player earn half of win.
 
