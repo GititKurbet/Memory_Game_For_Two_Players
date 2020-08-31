@@ -15,14 +15,14 @@ The communication works with TCP network protocol.
 
 ## The Game
 
-![](GameGif1.gif)
+![](/ReadMe_media/GameGif1.gif)
 
 Each player in turn flips two cards. If these two cards are identical, this player earn a point. 
 Number of turnes (moves) are counted for each player.
 
 After all cards are open - the player with more points is the winner. If there is a draw - each player earn half of win.
 
-![](GameGif4.gif)
+![](/ReadMe_media/GameGif4.gif)
 
 In the top menu bar we have 3 options :
 1) Log out
@@ -31,7 +31,7 @@ In the top menu bar we have 3 options :
 
 ## Top Players Table
 
-![](LeaderBoard.png)
+![](/ReadMe_media/LeaderBoard.png)
 
 Display of 5 top players according of their wins percent
 
@@ -39,8 +39,8 @@ Display of 5 top players according of their wins percent
 
 This is the main menu that pop first
 
-![](mainMenu.png)
+![](/ReadMe_media/mainMenu.png)
 
 Then, you must sign in or register with an username and a password
 
-![](GameGif3.gif)
+![](/ReadMe_media/GameGif3.gif)
