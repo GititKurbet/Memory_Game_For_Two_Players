@@ -13,7 +13,7 @@ The communication works with TCP network protocol.
 4)	Display of top players table
 5)	UserName Management System
 
-> The Game
+## The Game
 
 ![](GameGif1.gif)
 
@@ -22,8 +22,18 @@ Number od turnes (moves) are counted for each player.
 
 After all cards are open - the player with more points is the winner. If there is a draw - each player earn half of win.
 
-> Top Players Table
+## Top Players Table
+
+![](LeaderBoard.png)
 
 Display of the 5 top players according of their wins percent
 
-> Signing in
+## Signing in
+
+This is the main menu that pop first
+
+![](mainMenu.png)
+
+Then, you must sign in or register with username and 6 character password
+
+![](GameGif3.gif)
