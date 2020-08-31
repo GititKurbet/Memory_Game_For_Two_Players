@@ -41,6 +41,6 @@ This is the main menu that pop first
 
 ![](mainMenu.png)
 
-Then, you must sign in or register with username and 6 character password
+Then, you must sign in or register with an username and a password
 
 ![](GameGif3.gif)
