@@ -1,4 +1,4 @@
-# Memory Game For Two Players
+# Memory Game (Concentration) For Two Players
 
 This is a game that I originally created for university task, but i improved it and added more features to gain more experience in this area and for fun.
 The game is for two players who share a network.
